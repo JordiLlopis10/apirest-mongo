@@ -8,10 +8,12 @@ load_dotenv()
 
 app = Flask(__name__)
 
-uri = os.getenv("MONGO_URI")
+def get_db():
+    uri = os.getenv("MONGO_URI")
+    client = MongoClient(uri)
+    return client["test1"]
 
-client = MongoClient(uri)
-db = client["test1"]
+db = get_db()
 
 @app.route("/")
 def show():
