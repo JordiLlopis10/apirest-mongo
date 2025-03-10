@@ -1,19 +1,19 @@
 from bson import ObjectId
-from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify, request
+from pymongo.mongo_client import MongoClient
+from pymongo.server_api import ServerApi
 
 load_dotenv()
 
 app = Flask(__name__)
 
-def get_db():
-    uri = os.getenv("MONGO_URI")
-    client = MongoClient(uri)
-    return client["test1"]
+uri = os.getenv("MONGO_URI")
+client = MongoClient(uri, server_api=ServerApi("1"))
+db = client["test1"]
 
-db = get_db()
+
 
 @app.route("/")
 def show():
