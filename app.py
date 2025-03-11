@@ -69,6 +69,6 @@ def delete(id):
     except Exception as e:
         return jsonify({"Error": str(e)})
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))  # Render usa un puerto dinámico
-    app.run(host='0.0.0.0', port=port)
+#if __name__ == "__main__":
+ #   port = int(os.environ.get("PORT", 10000))  # Render usa un puerto dinámico
+  #  app.run(host='0.0.0.0', port=port)
